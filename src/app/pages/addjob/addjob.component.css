@@ -1,0 +1,26 @@
+.custom-file-upload {
+  /* Apply Bootstrap button styles here */
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.custom-file-upload:hover {
+  /* Add hover styles as needed */
+  background-color: #ddd;
+}
+.custom-file-upload {
+  /* Apply Mat raised button styles here */
+  display: inline-block;
+  padding: 16px 24px;
+  border-radius: 4px;
+  background-color: #7b1fa2; /* Mat raised button default */
+  box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-file-upload:hover {
+  background-color: #ff00d4; /* Mat raised button hover */
+}
