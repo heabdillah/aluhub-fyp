@@ -1,27 +1,21 @@
-<!-- <app-card title="JOBS" subtitle="LIST OF JOBS">
-  <button mat-raised-button class="btn btn-primary" color="accent">ADD NEW JOB</button>
+<app-card title="EVENTS" subtitle="LIST OF EVENTS">
+  <button mat-raised-button class="btn btn-primary" color="accent" (click)="onAddEvent()" style="margin-top: 10px;" >ADD NEW EVENT</button>
 
 <mat-progress-bar *ngIf="loading" mode="indeterminate" value="40"></mat-progress-bar>
 
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" style="margin-top: 10px;">
   <table mat-table class="full-width-table w-100" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="jobid">
+    Id Column
+    <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let row">{{row.jobid}}</td>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
-    <!-- JOBTITLE Column -->
-    <ng-container matColumnDef="jobtitle">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>JOBTITLE</th>
-      <td mat-cell *matCellDef="let row">{{row.jobtitle}}</td>
-    </ng-container>
-
-    <!-- INSTITUTE Column -->
-    <ng-container matColumnDef="institute">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>INSTITUTE</th>
-      <td mat-cell *matCellDef="let row">{{row.institute}}</td>
+    <!-- FEST_TITLE Column -->
+    <ng-container matColumnDef="festTitle">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>EVENT TITLE</th>
+      <td mat-cell *matCellDef="let row">{{row.festTitle}}</td>
     </ng-container>
 
     <!-- DESCRIPTION Column -->
@@ -30,17 +24,17 @@
       <td mat-cell *matCellDef="let row">{{row.description}}</td>
     </ng-container>
 
-    <!-- LOCATION Column -->
-    <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>LOCATION</th>
-      <td mat-cell *matCellDef="let row">{{row.location}}</td>
+    <!-- DATE Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>DATE</th>
+      <td mat-cell *matCellDef="let row">{{row.date}}</td>
     </ng-container>
 
     <!-- ATTACHMENT Column -->
     <ng-container matColumnDef="attachment">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>ATTACHMENTS</th>
       <td mat-cell *matCellDef="let row">{{row.attachment}}
-        <button mat-raised-button class="btn btn-primary" color="primary" (click)="view_jobs(row)">VIEW ATTACHMENT</button>
+        <button mat-raised-button class="btn btn-primary" color="primary" (click)="view_fests(row)">VIEW ATTACHMENT</button>
       </td>
     </ng-container>
 
@@ -58,4 +52,4 @@
 </div>
 
 
-</app-card> -->
+</app-card>

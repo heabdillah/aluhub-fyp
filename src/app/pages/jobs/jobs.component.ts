@@ -46,6 +46,7 @@ export class JobsComponent implements OnInit,AfterViewInit{
   onAddJob(){
     this.router.navigate(['/addjob']);
      }
+     
   title="JOBS";
   subtitle="LIST OF JOBS";
 

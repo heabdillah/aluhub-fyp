@@ -1,29 +1,33 @@
-<div class="container mt-5 ">
-  <div class="row justify-content-center">
-      <div class="col-md-5">
-          <div class="card card-body">
-              <h2 class="text-center">Login Form</h2>
-              <hr>
-              <!-- form content    -->
-               <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                <p>
-                  <mat-form-field appearance="outline" class="w-100 example-full-width">
-                      <mat-label>Email</mat-label>
-                      <input matInput placeholder="email">
-                  </mat-form-field>
-              </p>
-              <p>
-                  <mat-form-field appearance="outline" class="w-100 example-full-width">
-                      <mat-label>Password</mat-label>
-                      <input matInput placeholder="Password">
-                  </mat-form-field>
-              </p>
-              <button mat-raised-button color="primary"><mat-icon>login</mat-icon> Login</button>
-
-               </form>
-
-              <!-- ./form content    -->
+<div class="container vh-100">
+  <div class="row justify-content-center h-100">
+    <div class="text-center">
+      <h2>ALUHUB</h2>
+      <div class="card my-auto mx-auto mt-4 shadow" style="max-width: 400px;">
+        <div class="card-body p-4">
+          <div class="text-center">
+            <h2>Login</h2>
           </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" type="email" formControlName="email" required>
+              <mat-error *ngIf="loginForm?.get('email')?.invalid">{{ getErrorMessage() }}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="loginForm?.get('password')?.invalid">{{ getPErrorMessage() }}</mat-error>
+            </mat-form-field>
+            <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary" style="width: 100%;">Login</button>
+          </form>
+          <small><a routerLink="../forgot-password">Forgot Password</a></small><br>
+          Not registered? <small><a routerLink="../register">Create Account</a></small>
+        </div>
       </div>
+    </div>
   </div>
 </div>

@@ -39,7 +39,9 @@ import Swal from 'sweetalert2';
   providers:[JobService],
 })
 export class AddjobComponent implements OnInit {
+
   private _http: any;
+
   ngOnInit(): void {
 
   }

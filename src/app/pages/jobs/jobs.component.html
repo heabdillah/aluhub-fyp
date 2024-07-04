@@ -1,5 +1,5 @@
 <app-card title="JOBS" subtitle="LIST OF JOBS">
-  <button mat-raised-button class="btn btn-primary" color="accent" (click)="onAddJob()">ADD NEW JOB</button>
+  <button mat-raised-button class="btn btn-primary" color="accent" (click)="onAddJob()" style="margin-top: 10px;">ADD NEW JOB</button>
 
 <mat-progress-bar *ngIf="loading" mode="indeterminate" value="40"></mat-progress-bar>
 
@@ -31,7 +31,7 @@
   </table> -->
 
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" style="margin-top: 10px;">
     <table mat-table class="full-width-table w-100" matSort aria-label="Elements">
       <!-- Id Column -->
       <ng-container matColumnDef="jobid">

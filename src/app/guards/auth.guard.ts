@@ -1,22 +1,38 @@
-// import { routes } from './../app.routes';
-// import { CanActivateFn, Router, RouterModule } from '@angular/router';
-import { Component,Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanActivateChild } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class authGuard {
-  constructor(private router: Router) {} // Constructor with Router injection
+export class AuthGuard implements CanActivate, CanActivateChild {
 
-  canActivate(): boolean {
-    // Your guard logic here, potentially accessing `this.router` for navigation
-    const token = localStorage.getItem('token');
-    if (!token/* your authentication check */) {
-      this.router.navigate(['/logina']); // Example navigation using Router
-      return false;
-    }
-    return true;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.checkLoggedIn(state.url);
+  }
+
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.canActivate(childRoute, state);
+  }
+
+  private checkLoggedIn(url: string): Observable<boolean | UrlTree> {
+    return this.authService.isLoggedIn().pipe(
+      tap(loggedIn => {
+        if (!loggedIn) {
+          // If not logged in, redirect to login page with the return URL
+          this.router.navigate(['/logina'], { queryParams: { returnUrl: url } });
+        }
+      })
+    );
   }
 }
-
